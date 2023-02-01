@@ -17,7 +17,7 @@ public class AdManager {
     private Activity mAct;
     private int mAdIndex=0;
     private final String TAG="AdManager";
-    private HashMap<Integer,AdConfig> ad_configs=new HashMap<Integer,AdConfig>();
+    private HashMap<Integer,AdConfig> ad_configs=new HashMap<>();
 
     public static AdManager getInstance() {
         if (mAdManager == null) {
@@ -34,7 +34,6 @@ public class AdManager {
         //UnityManager.getInstance().init(mAct);
         //new RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("72B53935998177842601FAEA87926E9F"));
         AdMobManager.getInstance().init(mAct,getAdConfig(AdType.Admob));
-
     }
 
     public void logGoogleAdId(){
@@ -85,13 +84,13 @@ public class AdManager {
                 AdConfig adConfig=new AdConfig();
                 adConfig.adType=adType;
                 String bannerId=adObject.getString("bannerId");
-                if(bannerId.isEmpty()==false){
+                if(!bannerId.isEmpty()){
                     adConfig.bannerId=bannerId;
                 }else {
                     Log.e(TAG,"bannerId为空");
                 }
                 String insertId=adObject.getString("insertId");
-                if(insertId.isEmpty()==false){
+                if(!insertId.isEmpty()){
                     adConfig.insertId=insertId;
                 }else{
                     Log.e(TAG,"insertId为空");
